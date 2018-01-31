@@ -1,0 +1,321 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:customControls="clr-namespace:Common.CustomControl"
+                    >
+    <SolidColorBrush x:Key="ThemeBrush" Color="#3392d6"></SolidColorBrush>
+    <SolidColorBrush x:Key="NegativeChoiceDeep" Color="#FF9225"></SolidColorBrush>
+    <SolidColorBrush x:Key="NegativeChoiceLight" Color="#FFE2BA"></SolidColorBrush>
+    <SolidColorBrush x:Key="GrayBackground" Color="#eff0ea"></SolidColorBrush>
+    <SolidColorBrush x:Key="ButtonBorderBrush" Color="#078585"></SolidColorBrush>
+    
+    <ControlTemplate x:Key="ButtonControlTemplate" TargetType="Button">
+        <Border BorderThickness="{TemplateBinding BorderThickness}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                Background="{TemplateBinding Background}" 
+                SnapsToDevicePixels="True"
+                CornerRadius="3">
+                <ContentPresenter Focusable="False"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                              Margin="{TemplateBinding Padding}" 
+                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                              RecognizesAccessKey="True">
+
+                </ContentPresenter>
+        </Border>
+    </ControlTemplate>
+    
+    <Style x:Key="GoBackButtonStyle" TargetType="Button">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image x:Name="ButtonImage" Source="Image/back.png"></Image>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="ButtonImage" Property="Source" Value="Image/back_1.png"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="Button">
+        <Setter Property="Foreground" Value="{DynamicResource ThemeBrush}"></Setter>
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBrush}"></Setter>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" CornerRadius="3">
+                        <ContentPresenter x:Name="contentPresenter"
+                                          Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Margin="{TemplateBinding Padding}"
+                                          ></ContentPresenter>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+                            <Setter Property="Background" Value="{DynamicResource ThemeBrush}"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                            <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="RadioButton">
+        <Setter Property="FontFamily" Value="Microsoft YaHei Consolas HyBird"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Height="28" Width="28">
+                            <Image x:Name="imageNoChecked" Source="Image/sr1.png"/>
+                            <Image x:Name="imageChecked" Source="Image/sr2.png" Visibility="Hidden"/>
+                        </Grid>
+                        <Label x:Name="text" VerticalAlignment="Center" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}" Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers >
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="imageChecked" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="imageNoChecked" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter TargetName="imageChecked" Property="Visibility" Value="Hidden" />
+                            <Setter TargetName="imageNoChecked" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter TargetName="text" Property="Foreground" Value="red" />
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+        <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+    </ControlTemplate>
+    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="43" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderThickness="0" BorderBrush="#e8e8e8" />
+
+            <!--<Border Grid.Column="1" Background="#e8e8e8" Cursor="Hand"/>-->
+            <!--<Path x:Name="Arrow" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 10 10 L 20 0 Z"   Fill="#878585" />-->
+            <Image x:Name="Arrow"  Grid.Column="1" Width="23" Height="19" HorizontalAlignment="Right" VerticalAlignment="Center" Source="Image/Arror.png"    />
+        </Grid>
+    </ControlTemplate>
+
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF032C58" />
+                    <GradientStop Color="#FF032854" Offset="0.61699998378753662" />
+                    <GradientStop Color="#FF072449" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontFamily" Value="Microsoft YaHei Consolas HyBird"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Grid >
+                        <!-- ToggleButton 已数据绑定到 ComboBox 本身以切换 IsDropDownOpen -->
+                        <ToggleButton Grid.Column="2" Template="{DynamicResource ComboBoxToggleButton}" x:Name="ToggleButton" Focusable="false"  IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" ClickMode="Press"/>
+                        <ContentPresenter HorizontalAlignment="Left" Margin="3,3,23,3" x:Name="ContentSite" VerticalAlignment="Center" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" IsHitTestVisible="False"/>
+
+                        <!-- 必须将 TextBox 命名为 PART_EditableTextBox，否则 ComboBox 将无法识别它 -->
+                        <TextBox Visibility="Hidden" Template="{DynamicResource ComboBoxTextBox}" HorizontalAlignment="Left" Margin="3,3,23,3" x:Name="PART_EditableTextBox" Style="{x:Null}" VerticalAlignment="Center" Background="Transparent"  Focusable="True"  IsReadOnly="{TemplateBinding IsReadOnly}"/>
+
+                        <!-- Popup 可显示 ComboBox 中的项列表。IsOpen 已数据绑定到通过 ComboBoxToggleButton 来切换的 IsDropDownOpen -->
+                        <Popup IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" x:Name="Popup" Focusable="False" AllowsTransparency="True" PopupAnimation="Slide">
+                            <Grid   MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{TemplateBinding ActualWidth}" x:Name="DropDown" SnapsToDevicePixels="True">
+                                <Border x:Name="DropDownBorder" Background="{DynamicResource ThemeBrush}" BorderBrush="{DynamicResource SolidBorderBrush}" BorderThickness="1"/>
+                                <ScrollViewer Margin="4,6,4,6" Style="{DynamicResource SimpleScrollViewer}" SnapsToDevicePixels="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+                                    <!-- StackPanel 用于显示子级，方法是将 IsItemsHost 设置为 True -->
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"  Opacity="1" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    </Style>
+
+    <Style x:Key="{x:Type ComboBoxItem}"
+       TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Border x:Name="Border"
+                Padding="2"                
+                Background="Transparent">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="#9dc8be"  TargetName="Border"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+    </Style>
+
+    <Style x:Key="ExitClassButton" TargetType="{x:Type Button}" >
+        <Setter Property="FontFamily" Value="Microsoft YaHei Consolas HyBird"/>
+        <Setter Property="Background" Value="#EFF0EA"></Setter>
+        <Setter Property="Foreground" Value="#333333"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBrush}"></Setter>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="true" CornerRadius="3,3,3,3">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              Focusable="False" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{DynamicResource ThemeBrush}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style  x:Key="settingPageBtn" TargetType="{x:Type Button}" >
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="pack://application:,,,/Common;component/Image/settingpage_btn.png"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="true" CornerRadius="3,3,3,3">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              Focusable="False" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="pack://application:,,,/Common;component/Image/settingpage_btn_focus.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StartStopSpeakToggleButton" TargetType="ToggleButton">
+        <Setter Property="Margin" Value="10"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Padding" Value="10"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="BorderBrush" Value="White"></Setter>
+        <Setter Property="FontSize" Value="35"></Setter>
+        <!--<Setter Property="Height" Value="90"></Setter>
+                <Setter Property="Width" Value="280"></Setter>-->
+        <Setter Property="Background" Value="{DynamicResource ThemeBrush}"></Setter>
+        <Setter Property="FontFamily" Value="Microsoft YaHei Consolas HyBird"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="true" CornerRadius="3,3,3,3">
+                        <ContentPresenter x:Name="contentPresenter" 
+                                              Focusable="False" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="true">
+                <Setter Property="Background" Value="#EFF0EA"></Setter>
+                <Setter Property="Foreground" Value="{DynamicResource ThemeBrush}"></Setter>
+            </Trigger>
+            <!--<Trigger Property="IsChecked" Value="true">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Common;component/Image/kt_bt_hover.png"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Padding" Value="0 22 0 12"></Setter>
+                <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+                <Setter Property="Cursor" Value="Hand"></Setter>
+            </Trigger>-->
+        </Style.Triggers>
+
+    </Style>
+
+
+    <Style x:Key="IntoClassToggleButton" BasedOn="{StaticResource StartStopSpeakToggleButton}" TargetType="{x:Type ToggleButton}">
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/Common;component/Image/kt_bt_hover.png"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Padding" Value="0 22 0 12"></Setter>
+                <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+                <Setter Property="Cursor" Value="Hand"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

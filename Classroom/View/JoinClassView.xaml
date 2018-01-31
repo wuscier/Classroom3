@@ -1,0 +1,110 @@
+﻿<customControls:BaseWindow x:Class="Classroom.View.JoinClassView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:customControls="clr-namespace:Common.CustomControl;assembly=Common"
+        mc:Ignorable="d"
+        FontSize="40"
+                 Closed="JoinClassView_OnClosed"
+        >
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type Button}" >
+                <Setter Property="FontFamily" Value="Microsoft YaHei Consolas HyBird"/>
+                <Setter Property="Foreground" Value="{DynamicResource ThemeBrush}"></Setter>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource ThemeBrush}"></Setter>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="true" CornerRadius="3,3,3,3">
+                                <ContentPresenter x:Name="contentPresenter" 
+                                              Focusable="False" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused" Value="true">
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+
+                                    <Setter Property="Background" Value="{DynamicResource ThemeBrush}"></Setter>
+                                    <Setter Property="Foreground" Value="White"></Setter>
+                                    <Setter Property="BorderBrush" Value="#078585"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </controls:MetroWindow.Resources>
+
+
+    <Grid Background="#eff0ea">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"  />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="110"/>
+        </Grid.RowDefinitions>
+        <Grid Background="{StaticResource ThemeBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="GoBackButton"  PreviewKeyDown="btnBack_PreviewKeyDown"  Style="{StaticResource GoBackButtonStyle}" Height="66" Width="66" VerticalAlignment="Center" HorizontalAlignment="Center" Click="GoBackButton_Click"></Button>
+            <TextBlock Grid.Column="1" Text="加入课堂" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="40" ></TextBlock>
+        </Grid>
+
+        <Viewbox Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="323"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="714"/>
+                    <ColumnDefinition Width="260"/>
+                    <ColumnDefinition Width="323"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="71"/>
+                    <RowDefinition Height="109"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="475"/>
+                </Grid.RowDefinitions>
+                <Label  Content="输入课堂号码" HorizontalAlignment="Left"  FontWeight="Bold" VerticalAlignment="Center"  FontSize="32" Foreground="#545454"  Grid.Column="1"    Grid.Row="1" />
+                <TextBox x:Name="txt_classNo"  controls:TextBoxHelper.Watermark="按ok键弹出键盘" Text="{Binding ClassNo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Padding="10,0,0,0" Height="70"    TabIndex="0"  FontSize="32" VerticalContentAlignment="Center" VerticalAlignment="Center"  Grid.Row="1"  Grid.Column="2" LostFocus="txt_classNo_LostFocus" PreviewKeyDown="txt_classNo_PreviewKeyDown" TextChanged="txt_classNo_TextChanged" BorderThickness="0">
+                    <TextBox.Foreground>
+                        <SolidColorBrush Color="#d2d1d1"/>
+                    </TextBox.Foreground>
+                </TextBox>
+                <Button  x:Name="btn_joinClass"  Content="加入课堂" Command="{Binding JoinClassCommand}"  TabIndex="0" Height="60" Width="200" FontSize="32" Grid.Column="3"    Grid.Row="1"  HorizontalAlignment="Center"  VerticalAlignment="Center" />
+                <Label Content="最近的听课记录"  HorizontalAlignment="Left"  FontWeight="Bold" Foreground="#545454" FontSize="26" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"  />
+                <StackPanel x:Name="stack_join" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Background="White">
+                    <FrameworkElement.InputBindings>
+                    </FrameworkElement.InputBindings>
+                </StackPanel>
+            </Grid>
+
+        </Viewbox>
+    </Grid>
+
+
+</customControls:BaseWindow>

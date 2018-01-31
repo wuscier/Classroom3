@@ -1,0 +1,57 @@
+﻿<Window x:Class="Classroom.View.AttendeeListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Classroom.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:customControl="clr-namespace:Common.CustomControl;assembly=Common"
+        mc:Ignorable="d"
+        Title="AttendeeListView"
+                                          AllowsTransparency="True"
+                          Background="Transparent"
+                          WindowStyle="None"
+                Topmost="True"
+        Height="495" Width="812"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        PreviewKeyDown="ClassModeView_OnPreviewKeyDown"
+        >
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding GetAttendeesCommand}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="79"/>
+            <RowDefinition Height="416"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Common;Component/Image/kt_form_top.png"></ImageBrush>
+            </Grid.Background>
+            <TextBlock Text="已加入课堂的教室列表" Foreground="White" FontSize="26" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Common;Component/Image/kt_form_bg.png"></ImageBrush>
+            </Grid.Background>
+
+            <ScrollViewer Margin="10 0 15 25" VerticalScrollBarVisibility="Auto">
+                <ItemsControl ItemsSource="{Binding AttendeeItems}" Focusable="False">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <customControl:AttendeeControl></customControl:AttendeeControl>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>

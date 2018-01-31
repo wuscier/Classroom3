@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<setting>
+  	
+  	<CodeRate>3000</CodeRate>
+  	<CodeRate>2000</CodeRate>
+  	<CodeRate>1800</CodeRate>
+ 		<CodeRate>1500</CodeRate>
+  	<CodeRate>1200</CodeRate>
+  	<CodeRate>1000</CodeRate>
+ 	 	<CodeRate>800</CodeRate>
+  	<CodeRate>500</CodeRate>
+  	<CodeRate>300</CodeRate>
+ 		<CodeRate>150</CodeRate>
+
+  	
+</setting>

@@ -1,0 +1,109 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<RelayInfo>
+    <RelayItem>
+        <RelayIp>114.112.74.7</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>北京电信</RelayName>
+				<RelayId>1</RelayId>
+        <RelayIsp>电信</RelayIsp>
+    </RelayItem>
+    <RelayItem>
+        <RelayIp>210.51.168.102</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>北京联通</RelayName>
+				<RelayId>2</RelayId>
+        <RelayIsp>联通</RelayIsp>
+    </RelayItem>
+ 
+    <RelayItem>
+        <RelayIp>180.153.194.185</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>上海电信</RelayName>
+				<RelayId>11</RelayId>
+        <RelayIsp>电信</RelayIsp>
+    </RelayItem>
+    <RelayItem>
+        <RelayIp>112.65.213.217</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>上海联通</RelayName>
+				<RelayId>12</RelayId>
+        <RelayIsp>联通</RelayIsp>
+    </RelayItem>
+   
+    <RelayItem>
+        <RelayIp>125.88.254.161</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>广东电信</RelayName>
+				<RelayId>3</RelayId>
+        <RelayIsp>电信</RelayIsp>
+    </RelayItem>
+    <RelayItem>
+        <RelayIp>122.13.78.228</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>广东联通</RelayName>
+				<RelayId>4</RelayId>
+        <RelayIsp>联通</RelayIsp>
+    </RelayItem>
+
+
+    <RelayItem>
+        <RelayIp>124.116.176.117</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>西安电信</RelayName>
+				<RelayId>5</RelayId>
+        <RelayIsp>电信</RelayIsp>
+    </RelayItem>
+    <RelayItem>
+        <RelayIp>123.138.91.26</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>西安联通</RelayName>
+				<RelayId>6</RelayId>
+        <RelayIsp>联通</RelayIsp>
+    </RelayItem>
+
+   <RelayItem>
+        <RelayIp>222.178.179.75</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>重庆电信</RelayName>
+				<RelayId>7</RelayId>
+        <RelayIsp>电信</RelayIsp>
+    </RelayItem>
+    <RelayItem>
+        <RelayIp>221.7.112.76</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>重庆联通</RelayName>
+				<RelayId>8</RelayId>
+        <RelayIsp>联通</RelayIsp>
+    </RelayItem>
+
+    <RelayItem>
+        <RelayIp>61.183.245.142</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>武汉电信</RelayName>
+				<RelayId>9</RelayId>
+        <RelayIsp>电信</RelayIsp>
+    </RelayItem>
+    <RelayItem>
+        <RelayIp>220.249.119.219</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>武汉联通</RelayName>
+				<RelayId>10</RelayId>
+        <RelayIsp>联通</RelayIsp>
+    </RelayItem>
+
+    <RelayItem>
+        <RelayIp>222.171.242.144</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>哈尔滨电信</RelayName>
+				<RelayId>13</RelayId>
+        <RelayIsp>电信</RelayIsp>
+    </RelayItem>
+    <RelayItem>
+        <RelayIp>125.211.202.30</RelayIp>
+        <RelayPort>20029</RelayPort>
+				<RelayName>哈尔滨联通</RelayName>
+				<RelayId>14</RelayId>
+        <RelayIsp>联通</RelayIsp>
+    </RelayItem>
+
+</RelayInfo>

@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A9AA7DA5-DB45-4E02-AF48-70403B677EEC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common</RootNamespace>
+    <AssemblyName>Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.5.0\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Wpf.1.0.1\lib\net452\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Wpf.1.0.1\lib\net452\Caliburn.Micro.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Wpf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Wpf.1.0.1\lib\net452\Caliburn.Micro.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.2.0\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.6.2.0\lib\net45\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.4.0\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.3.2.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.RollingFile, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.RollingFile.3.3.0\lib\net45\Serilog.Sinks.RollingFile.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Wpf.1.0.1\lib\net452\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsInput, Version=1.0.4.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behavior\KeyDownBehavior.cs" />
+    <Compile Include="Contract\IClassScheduleService.cs" />
+    <Compile Include="Contract\IPushServerLive.cs" />
+    <Compile Include="Contract\IRecordingSystem.cs" />
+    <Compile Include="Contract\IRemoteRecord.cs" />
+    <Compile Include="Contract\ILocalDataManager.cs" />
+    <Compile Include="Contract\ILogManager.cs" />
+    <Compile Include="Contract\INetCheckService.cs" />
+    <Compile Include="Contract\IPushLive.cs" />
+    <Compile Include="Contract\IRecordLive.cs" />
+    <Compile Include="Converter\DateToStringConverter.cs" />
+    <Compile Include="CustomControl\AttendeeControl.xaml.cs">
+      <DependentUpon>AttendeeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\ClassModeControl.xaml.cs">
+      <DependentUpon>ClassModeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\RadioPictureButton.xaml.cs">
+      <DependentUpon>RadioPictureButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\InviteeButton.xaml.cs">
+      <DependentUpon>InviteeButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\MainMenuItem.xaml.cs">
+      <DependentUpon>MainMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\TextWithButton.xaml.cs">
+      <DependentUpon>TextWithButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\TriggerButton.xaml.cs">
+      <DependentUpon>TriggerButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AppCache.cs" />
+    <Compile Include="Helper\CacheKeys.cs" />
+    <Compile Include="Helper\ClassModeHelper.cs" />
+    <Compile Include="Helper\CommonHelp.cs" />
+    <Compile Include="Helper\DependencyResolver.cs" />
+    <Compile Include="Helper\EnumHelper.cs" />
+    <Compile Include="Helper\ExtendedScreenHelper.cs" />
+    <Compile Include="Helper\GlobalData.cs" />
+    <Compile Include="Helper\HttpManager.cs" />
+    <Compile Include="Helper\IntoClassType.cs" />
+    <Compile Include="Helper\MainMenuNames.cs" />
+    <Compile Include="Helper\MessageManager.cs" />
+    <Compile Include="Helper\InputSimulatorManager.cs" />
+    <Compile Include="Helper\NetStatus.cs" />
+    <Compile Include="Helper\WindowNames.cs" />
+    <Compile Include="Helper\WindowPosMananger.cs" />
+    <Compile Include="Model\ClassTable.cs" />
+    <Compile Include="Model\ConfigManager.cs" />
+    <Compile Include="Contract\IBms.cs" />
+    <Compile Include="CustomControl\BaseWindow.cs" />
+    <Compile Include="CustomControl\Dialog.xaml.cs">
+      <DependentUpon>Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\MsgBoxView.xaml.cs">
+      <DependentUpon>MsgBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\MsgBoxViewModel.cs" />
+    <Compile Include="Helper\ReturnMessage.cs" />
+    <Compile Include="Model\Classroom.cs" />
+    <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\CourseLiveStream.cs" />
+    <Compile Include="Model\CourseViewModel.cs" />
+    <Compile Include="Model\Mode.cs" />
+    <Compile Include="Model\ScreenModel.cs" />
+    <Compile Include="Model\LocalSetting.cs" />
+    <Compile Include="Model\SettingParameter.cs" />
+    <Compile Include="Model\ViewLayout\ClassMode.cs" />
+    <Compile Include="Model\ViewLayout\PictureMode.cs" />
+    <Compile Include="Model\ViewLayout\ViewArea.cs" />
+    <Compile Include="Model\ViewLayout\ViewFrame.cs" />
+    <Compile Include="Model\ViewLayout\ViewLayout.cs" />
+    <Compile Include="SwichMode.xaml.cs">
+      <DependentUpon>SwichMode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UiMessage\MessageItem.cs" />
+    <Compile Include="UiMessage\MessageQueueManager.cs" />
+    <Compile Include="UiMessage\MessageType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CustomControl\AttendeeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\ClassModeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\RadioPictureButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\Dialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControl\InviteeButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\MainMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\MsgBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControl\TextWithButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\TriggerButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SwichMode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Arror.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\back_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\btn_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\classmode_bt_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\classmode_bt_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\classmode_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\classmode_off_focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\classmode_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\classmode_on_focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_1_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_2_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_3_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_4_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_btn_5_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_foot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_net_connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_net_ConnectServer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\index_net_dismiss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\jp_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\jp_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\jp_delete_focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\jp_number.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\jp_number_focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kb_bt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_bt_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_btn_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_chkbox_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_chkbox_uncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_classList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_form_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_form_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_hd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_hzh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_kj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_mode_choose_focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_pjpl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_radiobtn_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_radiobtn_uncheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_top_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_top_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_ydyx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_zdpj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\kt_zj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\light_flag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\login_footer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\login_title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\msg_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\msg_infomation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\msg_warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\seting_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\seting_1_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setter_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setter_5_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setting_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setting_2_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setting_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setting_3_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setting_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\setting_4_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\settingpage_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\settingpage_btn_focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\shuxian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\sr1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\sr2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\txt_focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_jr_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_jr_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_lzkt_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_lzkt_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_sh_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_sh_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_tk_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\yq_tk_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MeetingSdk2\MeetingSdk.NetAgent\MeetingSdk.NetAgent.csproj">
+      <Project>{4c141806-f4fa-43fc-8813-b5f02425ebeb}</Project>
+      <Name>MeetingSdk.NetAgent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MeetingSdk2\MeetingSdk.Wpf\MeetingSdk.Wpf.csproj">
+      <Project>{1ac195a5-91eb-4c63-8035-0b9b1fa837e2}</Project>
+      <Name>MeetingSdk.Wpf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

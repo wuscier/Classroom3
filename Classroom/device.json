@@ -1,0 +1,40 @@
+﻿[
+  {
+    "typeName": "Camera",
+    "deviceNames": [
+      {
+        "name": "",
+        "option": ""
+      },
+      {
+        "name": "",
+        "option": ""
+      }]
+  },
+  {
+    "typeName": "Microphone",
+    "deviceNames": [
+      {
+        "name": "",
+        "option": ""
+      },
+      {
+        "name": "",
+        "option": ""
+      }
+    ]
+  },
+  {
+    "typeName": "Speaker",
+    "deviceNames": [
+      {
+        "name": "",
+        "option": ""
+      },
+      {
+        "name": "",
+        "option": ""
+      }
+    ]
+  }
+]

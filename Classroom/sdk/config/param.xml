@@ -1,0 +1,76 @@
+<FrameWork name="FrameWork param">
+    <MeetingFrameWork name="Param">
+        <Param name="AudioCapParam" number="0">
+            <sampleRate>0</sampleRate>
+            <bitsPerSample>16</bitsPerSample>
+            <channels>1</channels>
+        </Param>
+        <Param name="AudioRenderParam" number="1">
+            <sampleRate>0</sampleRate>
+            <bitsPerSample>16</bitsPerSample>
+            <channels>1</channels>
+        </Param>
+        <Param name="AudioEncodeParam" number="2">
+            <codecID>4</codecID>
+            <bitRate>0</bitRate>
+            <sampleRate>0</sampleRate>
+            <channels>1</channels>
+            <bitsPerSample>16</bitsPerSample>
+        </Param>
+        <Param name="AudioDecodeParam" number="3">
+            <codecID>4</codecID>
+            <sampleRate>0</sampleRate>
+            <channels>1</channels>
+            <bitsPerSample>16</bitsPerSample>
+        </Param>
+        <Param name="VideoCapParam" number="4">
+            <width>640</width>
+            <height>360</height>
+            <fps>15</fps>
+            <pixFmt>1</pixFmt>
+        </Param>
+        <Param name="VideoDataCapParam" number="5">
+            <width>1280</width>
+            <height>720</height>
+            <fps>25</fps>
+            <pixFmt>1</pixFmt>
+        </Param>
+        <Param name="VideoEncodeParam" number="6">
+            <codecID>0</codecID>
+            <width>640</width>
+            <height>360</height>
+            <fps>15</fps>
+            <bitRate>500</bitRate>
+            <skip>0</skip>
+        </Param>
+        <Param name="VideoDataEncodeParam" number="7">
+            <codecID>0</codecID>
+            <width>1280</width>
+            <height>720</height>
+            <fps>25</fps>
+            <bitRate>800</bitRate>
+            <skip>0</skip>
+        </Param>
+        <Param name="VideoDecodeParam" number="8">
+            <codecID>0</codecID>
+            <width>1280</width>
+            <height>720</height>
+        </Param>
+        <Param name="VideoRenderParam" number="9">
+            <width>1280</width>
+            <height>720</height>
+        </Param>
+        <Param name="LogLevel" number="10">
+            <Error>1</Error>
+            <Message>1</Message>
+            <Warning>1</Warning>
+            <Debug>0</Debug>
+        </Param>
+        <Param name="NeedAEC" number="11">
+            <AEC>0</AEC>
+        </Param>
+        <Param name="WriteFile" number="12">
+            <FILE>0</FILE>
+        </Param>
+    </MeetingFrameWork>
+</FrameWork>

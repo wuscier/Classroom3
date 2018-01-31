@@ -1,0 +1,5 @@
+xcopy /r /y $(ProjectDir)sdk\*.* $(TargetDir)
+if not exist $(TargetDir)PLugin md $(TargetDir)PLugin
+xcopy /r /y $(ProjectDir)sdk\PLugin\*.* $(TargetDir)PLugin
+if not exist $(TargetDir)config md $(TargetDir)config
+xcopy /r /y $(ProjectDir)sdk\config\*.* $(TargetDir)config

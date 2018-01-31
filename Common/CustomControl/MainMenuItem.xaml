@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Common.CustomControl.MainMenuItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" x:Name="MenuUserControl"
+             Focusable="False">
+    
+    <Button RenderTransformOrigin="0.5 0.5" Command="{Binding GotoCommand}" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button.Template>
+            <ControlTemplate TargetType="Button">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="ImageGrid" Source="{Binding ImageUrl}">
+                    </Image>
+                    <TextBlock x:Name="MenuTextBlock" FontFamily="Microsoft YaHei Light Arial" FontWeight="SemiBold" Grid.Row="1" FontSize="26" Text="{Binding MenuName}" HorizontalAlignment="Center" Foreground="{Binding ElementName=MenuUserControl,Path=Foreground}"></TextBlock>
+                </Grid>
+                
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter TargetName="ImageGrid" Property="Source" Value="{Binding FocusedImageUrl}">
+                        </Setter>
+                        <Setter TargetName="MenuTextBlock" Property="FontSize" Value="32"></Setter>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="1.1" ScaleY="1.1"></ScaleTransform>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Button.Template>
+    </Button>
+</UserControl>

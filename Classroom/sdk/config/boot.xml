@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <FileVersion>1.0</FileVersion>
+
+  <nps-url>
+	<nps-url>http://xmeeting.butel.com/nps_x1</nps-url>
+  </nps-url>
+
+</configuration>

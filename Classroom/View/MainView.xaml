@@ -1,0 +1,51 @@
+﻿<customControl:BaseWindow x:Class="Classroom.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                          xmlns:models="clr-namespace:Classroom.Model"
+                          xmlns:input="clr-namespace:System.Windows.Input;assembly=System"
+                          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:customControl="clr-namespace:Common.CustomControl;assembly=Common"
+        mc:Ignorable="d"
+                          FocusManager.FocusedElement="{Binding ElementName=JoinClass,Path=Content}"
+                           Background="{StaticResource ThemeBrush}"
+                          >
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding MainViewLoadedCommand}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
+    <Viewbox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="110"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.Row="0"></DockPanel>
+            <Grid Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <customControl:MainMenuItem x:Name="Timetable" Grid.Column="1" DataContext="{Binding TimetableMenu}" Foreground="White"></customControl:MainMenuItem>
+                <customControl:MainMenuItem  x:Name="CreateClass" Grid.Column="2" DataContext="{Binding CreateClassMenu}" Foreground="White"></customControl:MainMenuItem>
+                <customControl:MainMenuItem x:Name="JoinClass" Grid.Column="3" DataContext="{Binding JoinClassMenu}" Foreground="White"></customControl:MainMenuItem>
+                <customControl:MainMenuItem  x:Name="Classrooms" Grid.Column="4" DataContext="{Binding ClassroomsMenu}" Foreground="White"></customControl:MainMenuItem>
+                <customControl:MainMenuItem  x:Name="Setting" Grid.Column="5" DataContext="{Binding SettingMenu}" Foreground="White"></customControl:MainMenuItem>
+            </Grid>
+            <DockPanel Grid.Row="2"></DockPanel>
+        </Grid>
+    </Viewbox>
+    
+    </customControl:BaseWindow>

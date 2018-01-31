@@ -1,0 +1,48 @@
+﻿<customControl:BaseWindow x:Class="Classroom.View.SettingNavView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:customControl="clr-namespace:Common.CustomControl;assembly=Common"
+        mc:Ignorable="d"
+FocusManager.FocusedElement="{Binding ElementName=AudioSetting,Path=Content}"
+        Background="{StaticResource ThemeBrush}"
+        >
+    
+        <Grid Name="NavGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="110"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="GoBackButton" Command="{Binding GoBackCommand}" Style="{StaticResource GoBackButtonStyle}" Height="66" Width="66" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+                <TextBlock Grid.Column="1" Text="设置" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="40"></TextBlock>
+            </Grid>
+        <Viewbox Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="30"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <customControl:MainMenuItem x:Name="Basic" Grid.Column="1" Focusable="True" DataContext="{Binding BasicSettingMenu}" Foreground="White"></customControl:MainMenuItem>
+                <customControl:MainMenuItem x:Name="Video"  Grid.Column="2" DataContext="{Binding VideoSettingMenu}" Foreground="White"></customControl:MainMenuItem>
+                <customControl:MainMenuItem  x:Name="Audio" Grid.Column="3" DataContext="{Binding AudioSettingMenu}" Foreground="White"></customControl:MainMenuItem>
+                <customControl:MainMenuItem  x:Name="Network" Grid.Column="4" DataContext="{Binding NetSettingMenu}" Foreground="White"></customControl:MainMenuItem>
+                <customControl:MainMenuItem x:Name="Live"  Grid.Column="5" DataContext="{Binding LiveSettingMenu}" Foreground="White"></customControl:MainMenuItem>
+            </Grid>
+        </Viewbox>
+        </Grid>
+</customControl:BaseWindow>

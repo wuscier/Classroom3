@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Common.CustomControl.RadioPictureButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:Common.Behavior"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <RadioButton Command="{Binding CheckCommand}" CommandParameter="{Binding Type}">
+        <i:Interaction.Behaviors>
+            <behaviors:KeyDownBehavior KeyDownCommand="{Binding CheckCommand}"></behaviors:KeyDownBehavior>
+        </i:Interaction.Behaviors>
+        <RadioButton.Style>
+            <Style TargetType="RadioButton">
+                <Setter Property="FontSize" Value="24"></Setter>
+                <Setter Property="Padding" Value="5"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="IsChecked" Value="{Binding Checked}"></Setter>
+                <Setter Property="GroupName" Value="{Binding GroupName}"></Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Grid x:Name="Grid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Image x:Name="Image" Source="{Binding Image}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="15 10 10 10" Width="45" Height="45"></Image>
+                                <Image x:Name="SelectedImage" Grid.Column="1" Source="/Common;Component/Image/sr2.png" Margin="5 0 0 0" Width="28" Height="28" Visibility="Collapsed"></Image>
+                                <Image x:Name="UnselectedImage" Grid.Column="1" Source="/Common;Component/Image/sr1.png" Margin="5 0 0 0" Width="28" Height="28" Visibility="Visible"></Image>
+                                <ContentPresenter Grid.Column="2" VerticalAlignment="Center" Content="{Binding Name}" Margin="5 0 15 0"></ContentPresenter>
+                            </Grid>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+                                    <Setter Property="Foreground" Value="Red"></Setter>
+                                    <Setter TargetName="Grid" Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush Stretch="Fill" ImageSource="/Common;Component/Image/kt_mode_choose_focus.png"></ImageBrush>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="SelectedImage" Property="Visibility" Value="Visible"></Setter>
+                                    <Setter TargetName="UnselectedImage" Property="Visibility" Value="Collapsed"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </RadioButton.Style>
+    </RadioButton>
+</UserControl>

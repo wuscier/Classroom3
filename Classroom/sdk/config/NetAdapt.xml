@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<setting>
+    <ChooseCard>
+        <UpLoad>
+            <NetWidth Width="8000" ReSendReserveBindWidth="20" />
+            <video DataSendCopies="0" CheckSendCopies="0" DataReSendTimes="3" CheckReSendTimes="0" ReSendCopies="5" FecFirst="6" FecSecond="3" />
+            <audio DataSendCopies="1" CheckSendCopies="0" DataReSendTimes="3" CheckReSendTimes="0" ReSendCopies="5" FecFirst="4" FecSecond="6" />
+            <DocVideo DataSendCopies="0" CheckSendCopies="0" DataReSendTimes="3" CheckReSendTimes="0" ReSendCopies="5" FecFirst="6" FecSecond="3" />
+        </UpLoad>
+        <DownLoad>
+            <NetWidth Width="8000" ReSendReserveBindWidth="20" />
+            <video DataSendCopies="0" CheckSendCopies="0" DataReSendTimes="3" CheckReSendTimes="0" ReSendCopies="5" FecFirst="6" FecSecond="3" RecvDelay="300" />
+            <audio DataSendCopies="1" CheckSendCopies="0" DataReSendTimes="3" CheckReSendTimes="0" ReSendCopies="5" FecFirst="4" FecSecond="6" RecvDelay="300" />
+            <DocVideo DataSendCopies="0" CheckSendCopies="0" DataReSendTimes="3" CheckReSendTimes="0" ReSendCopies="5" FecFirst="6" FecSecond="3" RecvDelay="300" />
+        </DownLoad>
+    </ChooseCard>
+</setting>

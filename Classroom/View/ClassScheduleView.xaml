@@ -1,0 +1,295 @@
+﻿<customControls:BaseWindow x:Class="Classroom.View.ClassScheduleView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Classroom.View"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:customControls="clr-namespace:Common.CustomControl;assembly=Common"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:behavior="clr-namespace:Common.Behavior;assembly=Common"
+        mc:Ignorable="d"
+        FontSize="40"
+        KeyDown="Windown_KeyDown"
+        >
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <!--<i:Interaction.Behaviors>
+        <behavior:KeyDownBehavior KeyDownCommand="{Binding WindowKeyDownCommand}"></behavior:KeyDownBehavior>
+    </i:Interaction.Behaviors>-->
+
+   <Grid Background="{StaticResource GrayBackground}">
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Foreground" Value="#999999"></Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110"  />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="110"/>
+            </Grid.RowDefinitions>
+            <Grid Background="{StaticResource ThemeBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="GoBackButton" Command="{Binding GoBackCommand}" Style="{StaticResource GoBackButtonStyle}" Height="66" Width="66" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+                <TextBlock Grid.Column="1" Text="课程表" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="40"></TextBlock>
+            </Grid>
+        <Viewbox  Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1324"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="97"/>
+                    <RowDefinition Height="717"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Name="TestGrid" Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                </Grid>
+
+                <!--课表表格grid-->
+                <Grid  x:Name="CourseTableGrid" Row="1" Column="1" Background="White">
+                    <Grid.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderBrush" Value="#E2E2E2"></Setter>
+                            <Setter Property="BorderThickness" Value="1"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="186"/>
+                        <ColumnDefinition Width="126"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="78"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <!--标题栏Grid-->
+                    <Grid x:Name="TitleGrid" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" >
+                        <Grid.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="Foreground" Value="White"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="312"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image VerticalAlignment="Center" Source="/Common;Component/Image/kb_bt.png"  >
+                            <Image.OpacityMask>
+                                <ImageBrush ImageSource="/Common;Component/Image/kb_bt.png"/>
+                            </Image.OpacityMask>
+                        </Image>
+                        <Border></Border>
+                        <Grid Grid.Row="0" Grid.Column="1" Background="#1AAcf7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="星期一" Grid.Column="0" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24"/>
+                            <Label Content="星期二" Grid.Column="1" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24"/>
+                            <Label Content="星期三" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24"/>
+                            <Label Content="星期四" Grid.Column="3" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24"/>
+                            <Label Content="星期五" Grid.Column="4" HorizontalAlignment="Center"  VerticalAlignment="Center" FontSize="24"/>
+                            <Border Grid.Column="0"></Border>
+                            <Border Grid.Column="1"></Border>
+                            <Border Grid.Column="2"></Border>
+                            <Border Grid.Column="3"></Border>
+                            <Border Grid.Column="4"></Border>
+                        </Grid>
+                    </Grid>
+                    <!--上午栏-->
+                    <Border Grid.Column="0" Grid.Row="1" >
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Content="上午"/>
+                    </Border>
+                    <!--上午1到4-->
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="0"/>
+                        <Label Content="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="1"/>
+                        <Label Content="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="2"/>
+                        <Label Content="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="3"/>
+                        <Border Grid.Row="0"></Border>
+                        <Border Grid.Row="1"></Border>
+                        <Border Grid.Row="2"></Border>
+                        <Border Grid.Row="3"></Border>
+                    </Grid>
+                    <!--下午-->
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Content="下午"/>
+                    </Border>
+                    <!--下午5到8-->
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="0"/>
+                        <Label Content="6" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="1"/>
+                        <Label Content="7" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="2"/>
+                        <Label Content="8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.Row="3"/>
+                        <Border Grid.Row="0"></Border>
+                        <Border Grid.Row="1"></Border>
+                        <Border Grid.Row="2"></Border>
+                        <Border Grid.Row="3"></Border>
+                    </Grid>
+                    <!--具体课程Grid-->
+
+                    <Grid  x:Name="courseGrid" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2">
+                        <Grid.Resources>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0"></Setter>
+                                <Setter Property="Focusable" Value="False"></Setter>
+                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsFocused" Value="true">
+                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                        <Setter Property="Background" Value="#E0EFE8"></Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                        <Setter Property="Background" Value="Transparent"></Setter>
+                                        <Setter Property="BorderThickness" Value="0"></Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Background" Value="White"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="White"></Setter>
+                                <Setter Property="Foreground" Value="Black"></Setter>
+                                <Setter Property="Width" Value="202"></Setter>
+                                <Setter Property="Height" Value="100"></Setter>
+                                <Setter Property="FontSize" Value="24"></Setter>
+                                <Setter Property="FontFamily" Value="Microsoft YaHei Consolas HyBird"/>
+                                <Setter Property="FocusVisualStyle" Value="{x:Null}"></Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="true">
+                                                <ContentPresenter x:Name="contentPresenter" 
+                                              Focusable="False" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              RecognizesAccessKey="True" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsFocused" Value="true">
+                                        <Setter Property="Foreground" Value="Red"></Setter>
+                                        <Setter Property="Background" Value="#E0EFE8"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Resources>
+
+                        <DataGrid x:Name="ClassesDataGrid"   ItemsSource="{Binding CourseViewList}"  IsReadOnly="True"   AutoGenerateColumns="False" CanUserAddRows="False"  HorizontalScrollBarVisibility="Disabled" 
+					CanUserDeleteRows="False" HeadersVisibility="None"   VerticalScrollBarVisibility="Hidden">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Height" Value="79.8" />
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Loaded="FrameworkElement_OnLoaded" Tag="{Binding MondayCourse}" Content="{Binding MondayCourse.CourseName}" ToolTip="{Binding MondayCourse.ToolTip}"    ToolTipService.ShowDuration="3000" GotFocus="Btn_OnGotFocus" LostFocus="Btn_OnLostFocus"  Command="{Binding CourseDetailCommand}" CommandParameter="{Binding MondayCourse.CourseId}">
+
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Loaded="FrameworkElement_OnLoaded"  Content="{Binding TuesdayCourse.CourseName}" ToolTip="{Binding TuesdayCourse.ToolTip}" Tag="{Binding TuesdayCourse}" ToolTipService.ShowDuration="3000" Command="{Binding CourseDetailCommand}"  GotFocus="Btn_OnGotFocus"  LostFocus="Btn_OnLostFocus" CommandParameter="{Binding TuesdayCourse.CourseId}"></Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button  Loaded="FrameworkElement_OnLoaded" Content="{Binding WednesdayCourse.CourseName}"  ToolTip="{Binding WednesdayCourse.ToolTip}" Tag="{Binding WednesdayCourse}" ToolTipService.ShowDuration="3000" GotFocus="Btn_OnGotFocus"  LostFocus="Btn_OnLostFocus"  Command="{Binding CourseDetailCommand}" CommandParameter="{Binding WednesdayCourse.CourseId}"></Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Loaded="FrameworkElement_OnLoaded"  Content="{Binding ThursdayCourse.CourseName}" ToolTip="{Binding ThursdayCourse.ToolTip}" Tag="{Binding ThursdayCourse}" ToolTipService.ShowDuration="3000"  Command="{Binding CourseDetailCommand}"   GotFocus="Btn_OnGotFocus" LostFocus="Btn_OnLostFocus" CommandParameter="{Binding ThursdayCourse.CourseId}">
+                                                <!--<Button.Style>
+                                                    <Style BasedOn="{StaticResource MetroButton}" TargetType="Button">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ThursdayCourse.IsProcessing}" Value="true">
+                                                                <Setter Property="Background" Value="Red"></Setter>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>-->
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Loaded="FrameworkElement_OnLoaded"  Content="{Binding FridayCourse.CourseName}" ToolTip="{Binding FridayCourse.ToolTip}" Tag="{Binding FridayCourse}" ToolTipService.ShowDuration="3000" Command="{Binding CourseDetailCommand}"  GotFocus="Btn_OnGotFocus" LostFocus="Btn_OnLostFocus" CommandParameter="{Binding FridayCourse.CourseId}"></Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <!--<DataGridTextColumn Header="2"  Binding="{Binding TuesdayCourse.CourseName}" Width ="*" />
+                                <DataGridTextColumn Header="3"  Binding="{Binding WednesdayCourse.CourseName}" Width ="*">
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="4"  Binding="{Binding ThursdayCourse.CourseName}" Width ="*" />
+                                <DataGridTextColumn Header="5"  Binding="{Binding FridayCourse.CourseName}" Width ="*" />-->
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Viewbox>
+        </Grid>
+   
+</customControls:BaseWindow>

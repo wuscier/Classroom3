@@ -1,0 +1,145 @@
+﻿<customControls:BaseWindow x:Class="Classroom.View.LiveSettingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:behavior="clr-namespace:Common.Behavior;assembly=Common"
+                      xmlns:customControls="clr-namespace:Common.CustomControl;assembly=Common"
+        mc:Ignorable="d"
+        FontSize="40"
+        Background="{DynamicResource ThemeBrush}"  
+        >
+
+
+    <controls:MetroWindow.Resources>
+        <Style TargetType="StackPanel" x:Key="StackPanelStyle">
+            <Setter Property="Height" Value="100" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="1226" />
+            <Setter Property="Orientation" Value="Horizontal" />
+        </Style>
+        <Style TargetType="Label" x:Key="LableStyle">
+            <Setter Property="Width" Value="270"></Setter>
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Margin" Value="50,0,0,0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="Image" x:Key="ImageStyle">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Height" Value="47" />
+            <Setter Property="Width" Value="4" />
+            <!--<Setter Property="VerticalAlignment" Value="Center" />-->
+            <Setter Property="Margin" Value="10,0,0,0" />
+            <Setter Property="Source" Value="pack://application:,,,/Common;component/Image/shuxian.png" />
+        </Style>
+        <Style TargetType="Border" x:Key="BorderStyle">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Width" Value="1210" />
+            <Setter Property="Margin" Value="10,0,0,0" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ThemeBrush}" />
+        </Style>
+    </controls:MetroWindow.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <i:Interaction.Behaviors>
+        <behavior:KeyDownBehavior KeyDownCommand="{Binding WindowKeyDownCommand}"></behavior:KeyDownBehavior>
+    </i:Interaction.Behaviors>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"  />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="110"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="GoBackButton" Command="{Binding GoBackCommand}"  PreviewKeyDown="btnBack_PreviewKeyDown"  Style="{StaticResource GoBackButtonStyle}" Height="66" Width="66" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+            <TextBlock Grid.Column="1" Text="直播设置" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="40"></TextBlock>
+        </Grid>
+        <Viewbox Grid.Row="1" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <StackPanel GotFocus="stack_GotFocus" LostFocus="Stack_OnLostFocus" Name="StackDisplaySource" Style="{StaticResource StackPanelStyle}">
+                        <Label Name="LblDisplaysource" Content=" 内网直播清晰度" Style="{StaticResource LableStyle}"/>
+                        <Image Style="{StaticResource ImageStyle}" />
+                        <!--使用KeyDown监听键盘事件时将接收不到“上、下、左、右”的事件，因此采用PreviewKeyDown-->
+                        <ComboBox Name="CbbDisplaySource" VerticalAlignment="Center" FontSize="36" Width="800" Foreground="White" Margin="10,23,0,23" PreviewKeyDown="combox_PreviewKeyDown" ItemsSource="{Binding LiveDisplaySource}" SelectedItem="{Binding SelectedLiveDisplay,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  />
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderStyle}"/>
+                    <StackPanel GotFocus="stack_GotFocus" LostFocus="Stack_OnLostFocus" Name="StackDocSource" Style="{StaticResource StackPanelStyle}">
+                        <Label Name="LblDocsource" Content="    内网直播码率"  Style="{StaticResource LableStyle}"/>
+                        <Image Style="{StaticResource ImageStyle}" />
+                        <ComboBox Name="CbbDocSource" VerticalAlignment="Center" FontSize="36" Width="800" Foreground="White" Margin="10,23,0,23" PreviewKeyDown="combox_PreviewKeyDown" ItemsSource="{Binding LiveRateSource}" SelectedItem="{Binding SelectedLiveRate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  />
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderStyle}"/>
+                    <StackPanel GotFocus="stack_GotFocus" LostFocus="Stack_OnLostFocus" Name="StackVodDisplay" Style="{StaticResource StackPanelStyle}">
+                        <Label Name="LblVoddisplay" Content=" 外网直播清晰度"  Style="{StaticResource LableStyle}"/>
+                        <Image Style="{StaticResource ImageStyle}" />
+                        <ComboBox Name="CbbVodDisplay" VerticalAlignment="Center" FontSize="36" Width="800" Foreground="White" Margin="10,23,0,23" PreviewKeyDown="combox_PreviewKeyDown" ItemsSource="{Binding LiveDisplaySource}" SelectedItem="{Binding SelectedRemoteDisplay,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"   />
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderStyle}"/>
+                    <StackPanel GotFocus="stack_GotFocus" LostFocus="Stack_OnLostFocus" Name="StackVodBitrate" Style="{StaticResource StackPanelStyle}">
+                        <Label Name="LblVodbitrate" Content="    外网直播码率"  Style="{StaticResource LableStyle}"/>
+                        <Image Style="{StaticResource ImageStyle}" />
+                        <ComboBox Name="CbbVodBitrate" VerticalAlignment="Center" FontSize="36" Width="800" Foreground="White" Margin="10,23,0,23" PreviewKeyDown="combox_PreviewKeyDown" ItemsSource="{Binding LiveRateSource}" SelectedItem="{Binding SelectedRemoteRate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"     />
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderStyle}"/>
+                    <StackPanel GotFocus="stack_GotFocus" LostFocus="Stack_OnLostFocus" Name="StackLocalResolution" Style="{StaticResource StackPanelStyle}">
+                        <Label Name="LblLocalResolution" Content=" 本地录制分辨率"  Style="{StaticResource LableStyle}"/>
+                        <Image Style="{StaticResource ImageStyle}" />
+                        <ComboBox Name="CbbLocalResolution" VerticalAlignment="Center" FontSize="36" Width="800" Foreground="White" Margin="10,23,0,23" PreviewKeyDown="combox_PreviewKeyDown" ItemsSource="{Binding LiveDisplaySource}" SelectedItem="{Binding SelectedLocalResolution,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"     />
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderStyle}"/>
+
+                    <StackPanel GotFocus="stack_GotFocus" LostFocus="Stack_OnLostFocus" Name="StackLocalBitrate" Style="{StaticResource StackPanelStyle}">
+                        <Label Name="LblLocalBitrate" Content="    本地录制码率"  Style="{StaticResource LableStyle}"/>
+                        <Image Style="{StaticResource ImageStyle}" />
+                        <ComboBox Name="CbbLocalBitrate" VerticalAlignment="Center" FontSize="36" Width="800" Foreground="White" Margin="10,23,0,23" PreviewKeyDown="combox_PreviewKeyDown" ItemsSource="{Binding LiveRateSource}" SelectedItem="{Binding SelectedLocalBitrate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"     />
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderStyle}"/>
+
+                    <StackPanel GotFocus="stack_GotFocus" LostFocus="Stack_OnLostFocus" Name="StackLocalPath" Style="{StaticResource StackPanelStyle}">
+                        <Label Name="LblLocalPath" Content="    本地录制路径"  Style="{StaticResource LableStyle}"/>
+                        <Image Style="{StaticResource ImageStyle}" />
+                        <TextBox Text="{Binding SelectedLocalPath}" PreviewKeyDown="combox_PreviewKeyDown" Foreground="White" Width="800" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Center" FontSize="36" Margin="10 0 0 0" IsReadOnly="True">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding SelectRecordPathCommand}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
+                        </TextBox>
+                    </StackPanel>
+                    <Border Style="{StaticResource BorderStyle}"/>
+
+
+                </StackPanel>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</customControls:BaseWindow>
+
